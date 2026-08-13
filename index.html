@@ -776,7 +776,7 @@ if(!reduced){addEventListener('scroll',()=>{const y=Math.min(scrollY,innerHeight
   };
   new IntersectionObserver(es=>es.forEach(e=>{
     if(e.isIntersecting){ run(); } else { reset(); }
-  }),{threshold:.35}).observe(sec);
+  }),{threshold:.35}).observe(sec.querySelector('.addons-bg')||sec);
 })();
 
 // duplicate marquee content for seamless loop
