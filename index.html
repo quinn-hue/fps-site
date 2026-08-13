@@ -774,9 +774,17 @@ if(!reduced){addEventListener('scroll',()=>{const y=Math.min(scrollY,innerHeight
     // 2) let it sit a few seconds, then the cards arrive
     timers.push(setTimeout(()=>sec.classList.remove('cards-away'),5000));
   };
-  new IntersectionObserver(es=>es.forEach(e=>{
-    if(e.isIntersecting){ run(); } else { reset(); }
-  }),{threshold:.35}).observe(sec.querySelector('.addons-bg')||sec);
+  const tgt=sec.querySelector('.addons-bg')||sec;
+  let inV=false;
+  const chk=()=>{
+    const r=tgt.getBoundingClientRect();
+    const vis=r.top<innerHeight*.7&&r.bottom>innerHeight*.15;
+    if(vis&&!inV){inV=true;run();}
+    else if(!vis&&inV){inV=false;reset();}
+  };
+  addEventListener('scroll',chk,{passive:true});
+  addEventListener('resize',chk);
+  chk();
 })();
 
 // duplicate marquee content for seamless loop
