@@ -372,7 +372,7 @@ footer{border-top:1px solid var(--line-dark);padding:34px 0 40px}
   .stats{padding:90px 0}
   .mob{aspect-ratio:3/3.6}
   .hero{align-items:flex-end}
-  .hero-bg{background-position:60% 18%}
+  .hero-bg{background-position:75% 32%}
   .hero-bg::after{background:
     linear-gradient(180deg,rgba(10,10,11,.30) 0%,rgba(10,10,11,.05) 30%,rgba(10,10,11,.82) 72%,var(--ink) 100%)}
   .hero-inner{padding:0 0 8vh}
@@ -386,6 +386,13 @@ footer{border-top:1px solid var(--line-dark);padding:34px 0 40px}
   .node .cap{text-align:left;margin:6px 0 0!important;max-width:none}
   .node.above{flex-direction:column-reverse}
   .node.above .cap{margin:0 0 6px!important}
+  /* mobile timelapse showcase */
+  .addons{padding:56px 0 90px !important;background:var(--paper)}
+  .addons-bg{position:relative;inset:auto;height:235px;margin:0 22px 30px;border-radius:16px;overflow:hidden;box-shadow:0 12px 30px rgba(10,10,11,.16)}
+  .ab-layer{background-position:center 72%}
+  .addons-bg::after{background:linear-gradient(180deg,rgba(239,237,232,0) 50%,rgba(10,10,11,.55) 100%)}
+  .addons-bg::before{content:'4K TIMELAPSE \2014  DAY ONE TO DONE';position:absolute;left:16px;bottom:14px;z-index:2;color:#fff;font:800 10.5px/1 'Archivo',sans-serif;letter-spacing:.16em}
+  .addons.cards-away .addon-grid{opacity:1;transform:none;pointer-events:auto}
 }
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
