@@ -41,6 +41,19 @@ footer a{color:var(--muted)}
 .contact-chip{display:inline-flex;align-items:center;gap:8px;color:var(--white);text-decoration:none;font-weight:600}
 .contact-chip .dot{width:8px;height:8px;border-radius:50%;background:var(--orange);display:inline-block}
 </style>
+<!-- Google Ads tag + HubSpot form conversion tracking -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17413085584"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'AW-17413085584');
+window.addEventListener('message', function(e){
+  if (e.data && e.data.type === 'hsFormCallback' && e.data.eventName === 'onFormSubmitted') {
+    gtag('event', 'conversion', {'send_to': 'AW-17413085584/gzeGCNzp8IcbEJCzmu9A'});
+  }
+});
+</script>
 </head>
 <body>
 <div class="wrap">
