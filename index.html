@@ -416,10 +416,17 @@ window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'AW-17413085584');
+// Fires the Google Ads conversion once per submission. HubSpot's new-style
+// forms (hs-form-frame) emit 'hs-form-event:on-submission:success'; legacy
+// forms post an hsFormCallback message. Listen for both.
+window.fpsAdsConvSent = false;
+function fpsAdsConversion(){
+  if (window.fpsAdsConvSent) return; window.fpsAdsConvSent = true;
+  gtag('event', 'conversion', {'send_to': 'AW-17413085584/gzeGCNzp8IcbEJCzmu9A'});
+}
+window.addEventListener('hs-form-event:on-submission:success', fpsAdsConversion);
 window.addEventListener('message', function(e){
-  if (e.data && e.data.type === 'hsFormCallback' && e.data.eventName === 'onFormSubmitted') {
-    gtag('event', 'conversion', {'send_to': 'AW-17413085584/gzeGCNzp8IcbEJCzmu9A'});
-  }
+  if (e.data && e.data.type === 'hsFormCallback' && e.data.eventName === 'onFormSubmitted') fpsAdsConversion();
 });
 </script>
 <!-- Meta Pixel -->
@@ -434,10 +441,11 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '1074129628636011');
 fbq('track', 'PageView');
+window.fpsLeadSent = false;
+function fpsMetaLead(){ if (window.fpsLeadSent) return; window.fpsLeadSent = true; fbq('track', 'Lead'); }
+window.addEventListener('hs-form-event:on-submission:success', fpsMetaLead);
 window.addEventListener('message', function(e){
-  if (e.data && e.data.type === 'hsFormCallback' && e.data.eventName === 'onFormSubmitted') {
-    fbq('track', 'Lead');
-  }
+  if (e.data && e.data.type === 'hsFormCallback' && e.data.eventName === 'onFormSubmitted') fpsMetaLead();
 });
 </script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1074129628636011&ev=PageView&noscript=1"/></noscript>
